@@ -4,7 +4,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* LAYER 0
  * ,-------------------------------.
- * |  L1   | Prev  | Next  | Play  |
+ * |       |       |       |       |
  * |-------+-------+-------+-------|
  * |       |       |       |       |
  * |-------+-------+-------+-------|
@@ -14,10 +14,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-------------------------------'
  */
 [0] = LAYOUT(
-  TG(1),       KC_MPRV,    KC_MNXT,    KC_MPLY,
-  KC_NO,       KC_NO,      KC_NO,      KC_NO,
-  KC_NO,       KC_NO,      KC_NO,      KC_NO,
-  KC_NO,       KC_NO,      KC_NO,      KC_NO
+  KC_A,       KC_B,      KC_C,      KC_D,
+  KC_E,       KC_F,      KC_G,      KC_H,
+  KC_I,       KC_J,      KC_K,      KC_L,
+  RGB_MOD,    KC_NO,     KC_NO,     KC_NO
 ),
 /* LAYER 2-4
  * ,-------------------------------.
@@ -54,15 +54,15 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) { /* First encoder */
         if (get_highest_layer(layer_state|default_layer_state) > 0) {
           if (clockwise) {
-              tap_code_delay(KC_MS_WH_RIGHT, 10);
+              rgblight_decrease_val();
           } else {
-              tap_code_delay(KC_MS_WH_LEFT, 10);
+              rgblight_increase_val();
           }
         } else {
           if (clockwise) {
-              tap_code_delay(KC_MS_WH_DOWN, 10);
+              rgblight_decrease_val();
           } else {
-              tap_code_delay(KC_MS_WH_UP, 10);
+              rgblight_increase_val();
           }
         }
     } else if (index == 1) { /* Second encoder */
@@ -74,3 +74,4 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     }
     return false;
 };
+

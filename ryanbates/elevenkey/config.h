@@ -39,3 +39,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define ENCODERS_PAD_A { B2, B1 }
 #define ENCODERS_PAD_B { B6, B3 }
+
+#define RGB_DI_PIN F5
+#define RGBLED_NUM 13
+
+#define RGBLIGHT_ANIMATIONS
